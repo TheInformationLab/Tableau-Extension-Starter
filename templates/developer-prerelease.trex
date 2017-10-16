@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest manifest-version="0.1" xmlns="http://wwww.tableau.com/xml/addin_manifest">
+  <tableau-addin id="{{addin-id}}" addin-version="{{addin-version}}">
+    <default-locale>en_US</default-locale>
+    <name resource-id="name"/>
+    <description>{{description}}</description>
+    <addin-type>
+      <dashboard-addin/>
+    </addin-type>
+    <author name="{{author-name}}" email="{{author-email}}" organization="{{organisation}}" website="{{website}}"/>
+    <min-api-version>{{min-api-version}}</min-api-version>
+    <source-location>
+      <url>{{host-url}}</url>
+    </source-location>
+    <icon>{{icon}}</icon>
+  </tableau-addin>
+  <resources>
+    <resource id="name">
+      <text locale="en_US">{{name-en_US}}</text>
+    </resource>
+  </resources>
+</manifest>
