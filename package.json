@@ -1,0 +1,29 @@
+{
+  "name": "tableau-extension-starter",
+  "version": "1.0.0",
+  "description": "App to generate starter trex files for Tableau Extentions API",
+  "main": "app.js",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "express": "^4.16.2",
+    "express-healthcheck": "^0.1.0",
+    "http": "0.0.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "start": "node app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TheInformationLab/Tableau-Extension-Starter.git"
+  },
+  "keywords": [
+    "Tableau"
+  ],
+  "author": "Craig Bloodworth",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/TheInformationLab/Tableau-Extension-Starter/issues"
+  },
+  "homepage": "https://github.com/TheInformationLab/Tableau-Extension-Starter#readme"
+}
