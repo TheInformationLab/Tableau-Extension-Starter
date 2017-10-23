@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest manifest-version="0.1" xmlns="http://wwww.tableau.com/xml/addin_manifest">
-  <tableau-addin id="{{addin-id}}" addin-version="{{addin-version}}">
+  <tableau-addin id="{{addin-id}}" addin-version="{{addin-version#The current version number for your extension e.g. 1.0.0}}">
     <default-locale>en_US</default-locale>
     <name resource-id="name"/>
-    <description>{{description}}</description>
+    <description>{{description#What does your extension do?}}</description>
     <addin-type>
       <dashboard-addin/>
     </addin-type>
     <author name="{{author-name}}" email="{{author-email}}" organization="{{organisation}}" website="{{website}}"/>
-    <min-api-version>{{min-api-version}}</min-api-version>
+    <min-api-version>1.1</min-api-version>
     <source-location>
-      <url>{{host-url}}</url>
+      <url>{{host-url#The URL where your extension is hosted e.g. http://mydomain.com/myextension.html}}</url>
     </source-location>
     <icon>{{icon}}</icon>
   </tableau-addin>
   <resources>
     <resource id="name">
-      <text locale="en_US">{{name-en_US}}</text>
+      <text locale="en_US">{{name-en_US#Name (in english) for your extension}}</text>
     </resource>
   </resources>
 </manifest>

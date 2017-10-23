@@ -1,0 +1,104 @@
+body {
+  background-color: #f8f8f8;
+}
+
+.title {
+  padding: 20px 0px 20px 80px;
+}
+
+.mdl-layout__container {
+    height: 150%;
+}
+
+@media screen and (max-width: 1024px) {
+  .title {
+    padding: 20px 0px 20px 72px;
+  }
+}
+
+.title img {
+  height: 50px;
+}
+
+.mdl-layout__header {
+  background-color: #fff;
+  color: rgb(34, 150, 243);
+}
+
+.mdl-layout__header-row .mdl-navigation__link {
+  color: #757575;
+}
+
+.demo-card-wide.mdl-card {
+  width: 80%;
+  margin-top: 20px;
+  margin-left: 10%;
+}
+.demo-card-wide > .mdl-card__title {
+  background-color: rgb(34, 150, 243);
+  color: #fff;
+  padding: 10px;
+}
+.demo-card-wide > .mdl-card__menu {
+  color: #fff;
+}
+.mdl-card__title-text {
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 2;
+}
+.mdl-textfield {
+  margin: 0px 0px 0px 10px;
+}
+
+@shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+
+#selected-icon-field {
+  display: none;
+}
+
+#selected-icon-container {
+  display: inline-block;
+  padding-left: 10px;
+}
+#selected-icon-container button {
+  font-size: 64px;
+  cursor: pointer;
+}
+#selected-icon-container button i {
+  color: #fff;
+}
+#icons {
+  height: 200px;
+  overflow: auto;
+  box-shadow: @shadow;
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+}
+#icons i {
+  margin: 5px;
+  border-radius: 4px;
+  padding: 5px;
+  transition: background 0.2s ease;
+  cursor: pointer;
+  display: block;
+}
+#icons i:hover {
+  background: rgb(34, 150, 243);
+}
+.icon {
+  margin-left: 10px;
+}
+.icon-title {
+  color: rgb(33,150,243);
+  font-size: 12px;
+  padding-bottom: 10px;
+}
+
+.hljs {
+    display: block;
+    overflow-x: auto;
+    padding: 0.5em;
+    background: none;
+}
