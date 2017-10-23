@@ -1,4 +1,14 @@
 
+var getIcons = function() {
+  var settings = {
+        url : "/api/icons",
+        method : "GET"
+      }
+  $.ajax(settings).done(function (icons) {
+    $('#icons').html(icons);
+  });
+};
+
 var getTemplates = function(callback) {
   var settings = {
         url : "/api/templates",
@@ -111,7 +121,7 @@ var populateConfig = function(trex, fields) {
   });
 }
 
-var displayOutput = function() {
+var displayOutput = function(image) {
   var inputs = $('.mdl-textfield__input');
   var trex = $('#trexHolder').html();
   var company = "org";
@@ -130,8 +140,12 @@ var displayOutput = function() {
     trex = trex.replace('{{' + inputs[i].id + '}}', inputs[i].value);
   }
   trex = trex.replace('{{addin-id}}', 'com.' + company + '.extensions.' + name);
+  trex = trex.replace('{{icon}}', image);
   $('#trexOutput').text(trex);
   renderCode();
+  $('#saveas').click(function() {
+    saveAs(name);
+  });
   $('#outputCard').show();
 }
 
@@ -141,12 +155,64 @@ var renderCode = function() {
   });
 }
 
+var base64Encode = function(str) {
+        var CHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
+        var out = "", i = 0, len = str.length, c1, c2, c3;
+        while (i < len) {
+            c1 = str.charCodeAt(i++) & 0xff;
+            if (i == len) {
+                out += CHARS.charAt(c1 >> 2);
+                out += CHARS.charAt((c1 & 0x3) << 4);
+                out += "==";
+                break;
+            }
+            c2 = str.charCodeAt(i++);
+            if (i == len) {
+                out += CHARS.charAt(c1 >> 2);
+                out += CHARS.charAt(((c1 & 0x3)<< 4) | ((c2 & 0xF0) >> 4));
+                out += CHARS.charAt((c2 & 0xF) << 2);
+                out += "=";
+                break;
+            }
+            c3 = str.charCodeAt(i++);
+            out += CHARS.charAt(c1 >> 2);
+            out += CHARS.charAt(((c1 & 0x3) << 4) | ((c2 & 0xF0) >> 4));
+            out += CHARS.charAt(((c2 & 0xF) << 2) | ((c3 & 0xC0) >> 6));
+            out += CHARS.charAt(c3 & 0x3F);
+        }
+        return out;
+    }
+
+var getIcon = function(file, callback) {
+  $.ajax({
+      url: "/icons/ic_"+file+"_black_48dp.png",
+      type: "GET",
+      mimeType: "text/plain; charset=x-user-defined"
+  }).done(function( data, textStatus, jqXHR ) {
+      callback(base64Encode(data));
+  }).fail(function( jqXHR, textStatus, errorThrown ) {
+      console.log("get icon fail: " + errorThrown);
+  });
+}
+
+var saveAs = function(name){
+    var a = document.body.appendChild(
+        document.createElement("a")
+    );
+    a.download = name + ".trex";
+    a.href = "data:text/xml," + document.getElementById("trexOutput").innerText;
+    a.click();
+}
+
 $(document).ready(function () {
   getTemplates(function(latest) {
     onTemplateClick();
     loadFirstTemplate('developer-prerelease.trex');
   });
+  getIcons();
   $('#generate').click(function() {
-    displayOutput();
+    getIcon($('#selected-icon').html(), function(base64) {
+      displayOutput(base64);
+    });
   });
 });

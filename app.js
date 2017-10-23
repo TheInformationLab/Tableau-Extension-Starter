@@ -22,6 +22,13 @@ var getTemplates = function(callback) {
   });
 };
 
+var getIcons = function(callback) {
+  fs.readdir("public/icons/", function(err, files) {
+    if (err) throw err;
+    callback(files);
+  });
+};
+
 app.use( bodyParser.json({limit: '5000mb'}) );       // to support JSON-encoded bodies
 app.use( bodyParser.urlencoded({ extended:true, limit: '5000mb', parameterLimit: 10000000}));
 
@@ -30,6 +37,21 @@ app.use('/healthcheck', require('express-healthcheck')());
 app.get('/api/templates', function(req, res) {
   getTemplates(function(templates) {
     res.send(templates);
+  });
+});
+
+app.get('/api/icons', function(req, res) {
+  getIcons(function(icons) {
+    var list = "";
+    for (var i=0; i<icons.length; i++) {
+      var icon = icons[i];
+      icon = icon.replace('ic_','');
+      icon = icon.replace('_black_48dp.png','');
+      if (icon.indexOf('.DS_Store') == -1 && icon.indexOf('battery_') == -1 && icon.indexOf('signal_cellular_') == -1 && icon.indexOf('signal_wifi_') == -1) {
+        list += '<i class="iconbutton material-icons">'+icon+'</i>';
+      }
+    }
+    res.send(list);
   });
 });
 
