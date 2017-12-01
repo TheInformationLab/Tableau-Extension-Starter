@@ -132,7 +132,7 @@ var displayOutput = function(image) {
       company = company.toLowerCase();
       company = company.replace(/[^0-9a-zA-Z]/g, '');
     }
-    if (inputs[i].id == "name-en_US#Name (in english) for your extension" && inputs[i].value != '') {
+    if (inputs[i].id == "name-en_US#Name (in English) for your extension" && inputs[i].value != '') {
       name = inputs[i].value;
       name = name.toLowerCase();
       name = name.replace(/[^0-9a-zA-Z]/g, '');
@@ -207,7 +207,7 @@ var saveAs = function(name){
 $(document).ready(function () {
   getTemplates(function(latest) {
     onTemplateClick();
-    loadFirstTemplate('developer-prerelease.trex');
+    loadFirstTemplate('developer-0.7.0.trex');
   });
   getIcons();
   $('#generate').click(function() {

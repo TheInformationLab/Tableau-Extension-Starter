@@ -69,4 +69,8 @@ app.use(express.static('public'));
 
 app.listen(port, function() {
   console.log("Listening on http://127.0.0.1:3000");
+  if (process.env.NOW) {
+    var instance = process.env.NOW_URL
+    console.log("Push to live: now alias " + instance.replace("https://","") + " beta.theinformationlab.bi");
+  }
 });

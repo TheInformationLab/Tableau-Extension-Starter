@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest manifest-version="0.1" xmlns="http://wwww.tableau.com/xml/extension_manifest">
+  <dashboard-extension id="{{addin-id}}" extension-version="{{addin-version#The current version number for your extension e.g. 1.0.0}}">
+    <default-locale>en_US</default-locale>
+    <name resource-id="name"/>
+    <description>{{description#What does your extension do?}}</description>
+    <author name="{{author-name}}" email="{{author-email}}" organization="{{organisation}}" website="{{website}}"/>
+    <min-api-version>1.1</min-api-version>
+    <source-location>
+      <url>{{host-url#The URL where your extension is hosted e.g. https://mydomain.com/myextension.html}}</url>
+    </source-location>
+    <icon>{{icon}}</icon>
+  </dashboard-extension>
+  <resources>
+    <resource id="name">
+      <text locale="en_US">{{name-en_US#Name (in English) for your extension}}</text>
+      <text locale="fr_BE">{{name-fr_BE#Name (in French) for your extension}}</text>
+      <text locale="de_DE">{{name-de_DE#Name (in German) for your extension}}</text>
+    </resource>
+  </resources>
+</manifest>
